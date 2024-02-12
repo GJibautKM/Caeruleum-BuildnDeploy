@@ -5,17 +5,17 @@
 Générer l'image d'origine. (idéalement, avec un tag spécifique)
 
 ```ps
-docker build --no-cache --tag <image_name>:<image_tag> --file <docker_file> .
+docker build --no-cache --tag ${imageName}:${imageTag} --file ${dockerFile} .
 ```
 
 Envoyer l'image sur le Azure Container Registry.
 
 ```ps
-docker tag <image_name>:<image_tag> <acr_srv>/<image_name>:<image_tag>
+docker tag ${imageName}:${imageTag} ${acrSrv}/${imageName}:${imageTag}
 
-docker login <acr_srv> --username <acr_user> --password <acr_pwd>
+docker login ${acrSrv} --username ${acrUser} --password ${acrPwd}
 
-docker push <acr_srv>/<image_name>:<image_tag>
+docker push ${acrSrv}/${imageName}:${imageTag}
 ```
 
 ## Applications de type Worker => Container Apps
@@ -78,6 +78,6 @@ Créer une nouvelle Container App
     - Cela va activer le WebHook dans le Container Registry
 
       ⚠️ Attention, le Webhook est limité par défaut au tag d'image présent sur la Web App.
-      
+
       ⚠️ Attention, le nombre de Webhook est limité par le plan de facturation du Container Registry.
   - Optionnel : Configurer le Webhook dans le Container Registry.
